@@ -10,6 +10,16 @@ export class MyMCP extends McpAgent {
 	});
 
 	async init() {
+
+		// Greeter tool
+		this.server.tool(
+			"greet",
+			{ name: z.string() },
+			async ({ name }) => ({
+				content: [{ type: "text", text: `Bonjuur ${name}!` }],
+			})
+		);
+
 		// Simple addition tool
 		this.server.tool(
 			"add",
